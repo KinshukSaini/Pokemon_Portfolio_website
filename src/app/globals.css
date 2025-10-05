@@ -1,0 +1,65 @@
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(
+    to right, 
+    #7F231F 5%, 
+    #F75A52 26%, 
+    #F75A52 74%, 
+    #882D28 95%
+    );
+}
+
+html{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+/* Star Animation Keyframes */
+@keyframes star-scroll-fast {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+@keyframes star-scroll-medium {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+@keyframes star-scroll-slow {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+/* Tailwind Animation Classes */
+.animate-star-scroll-fast {
+  animation: star-scroll-fast 8s linear infinite;
+}
+
+.animate-star-scroll-medium {
+  animation: star-scroll-medium 12s linear infinite;
+}
+
+.animate-star-scroll-slow {
+  animation: star-scroll-slow 20s linear infinite;
+}
