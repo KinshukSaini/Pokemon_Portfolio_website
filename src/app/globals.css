@@ -1,20 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Koulen&display=swap");
 @import "tailwindcss";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body{
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    background: linear-gradient(
-    to right, 
-    #7F231F 5%, 
-    #F75A52 26%, 
-    #F75A52 74%, 
-    #882D28 95%
-    );
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: "Koulen", cursive;
+  background: linear-gradient(
+  to right, 
+  #7F231F 5%, 
+  #F75A52 26%, 
+  #F75A52 74%, 
+  #882D28 95%
+  );
 }
 
 html{
@@ -62,4 +64,26 @@ html{
 
 .animate-star-scroll-slow {
   animation: star-scroll-slow 20s linear infinite;
+}
+/* subtle inner inset used for the yellow squares or pill visuals */
+.inner-inset {
+  box-shadow: inset 0 6px 0 rgba(0,0,0,0.12);
+}
+
+/* a quick helper to emulate the offset "shadow" under the pill buttons */
+.pill-shadow {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 6px;
+  background: rgba(0,0,0,0.18);
+  border-radius: 8px;
+  transform: translateY(4px);
+}
+.text-box-shadow {
+  box-shadow: 13px 19px 0.2px 0 #0000007e;
+}
+.icon-box-shadow {
+  box-shadow: 4px 9px 0.2px 0 #0000007e;
 }

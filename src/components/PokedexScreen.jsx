@@ -53,7 +53,7 @@ const PokedexScreen = ({ activeSection }) => {
 
   return (
     <div
-      className="h-[83vh] w-[98vw] bg-gradient-to-r from-[#2B343A] to-[#0D1C23] stroke-[1px] border-[1.8vh] border-[#5D6BAD] rounded-[60px] flex items-center justify-center relative overflow-hidden
+      className="h-[83vh] w-[98vw] bg-gradient-to-r from-[#2B343A] to-[#0D1C23] stroke-[1px] border-[1.8vh] border-[#5D6BAD] rounded-[60px] flex items-center justify-center relative overflow-visible
       absolute left-1/2 -translate-x-1/2"
     >
       {/* Animated Starfield Background */}

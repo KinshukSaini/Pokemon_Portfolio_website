@@ -29,9 +29,14 @@ module.exports = {
       fontFamily: {
         heading: ["Poppins", "sans-serif"], // match your figma font
         body: ["Inter", "sans-serif"],
+        koulen: ["Koulen", "cursive"],
       },
       boxShadow: {
         card: "0 4px 20px rgba(0,0,0,0.1)", // same shadow as figma
+        // Figma-like shadow: X 17px, Y 23px, Blur 0.2px, Spread 0, Black @ 51%
+  // Visible, softer shadows (larger blur, reduced alpha)
+  section: "17px 23px 24px 0 rgba(0,0,0,0.51)",
+  sectionSelected: "15px 21px 20px 0 rgba(0,0,0,0.45)",
         pokeball: "4px 7px 0.1px 7px #854D1D",
         pokeballSm: "2px 4px 0.1px 4px #854D1D",
       },
