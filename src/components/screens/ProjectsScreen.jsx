@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
-const sampleProjects = [
+const Projects = [
   {
     id: 1,
     title: "AI Assisted Legal Document Editor for UK's Legislation",
@@ -27,10 +27,10 @@ const sampleProjects = [
   // add more items here
 ];
 
-const sampleExperience = [
+const Experience = [
   {
     id: 1,
-    title: "AI and Software Engineering - intern @ LexleyAI LLC",
+    title: "AI and Software Engineering - intern @ LexleyAI LLC - 7 Months",
     subtitle: "VITE (Js + css) + MongoDB + AWS + LangChain + RAGs (retreival augmented generation) + Gemini API",
     description:
       "Contributed to the development of a legal technology platform, serving as a full-stack engineer and AI developer. My primary contribution was leading the creation of a legal AI chatbot using LangChain and Python, applying Retrieval-Augmented Generation (RAG) to parse UK legislation, ensuring responses were reliable, contextually relevant, and source-backed. I successfully integrated and optimized this ChatGPT-like interface for a production environment. Concurrently, I enhanced the core product by designing a dynamic interface for legal document automation, contributing to the development of 20+ preview-rendered templates and adaptive questionnaires using React, Node.js, JSON, and a modular JS architecture.",
@@ -38,7 +38,15 @@ const sampleExperience = [
   },
   {
     id: 2,
-    title: "AWS Cloud Core Membet @ GGSIPU edc",
+    title: "Freelance Web Developer for Envisage multimanufacturer - 2 months",
+    subtitle: "NEXT.js + TailwindCSS",
+    description:
+      "Contributed to the development of a legal technology platform, serving as a full-stack engineer and AI developer. My primary contribution was leading the creation of a legal AI chatbot using LangChain and Python, applying Retrieval-Augmented Generation (RAG) to parse UK legislation, ensuring responses were reliable, contextually relevant, and source-backed. I successfully integrated and optimized this ChatGPT-like interface for a production environment. Concurrently, I enhanced the core product by designing a dynamic interface for legal document automation, contributing to the development of 20+ preview-rendered templates and adaptive questionnaires using React, Node.js, JSON, and a modular JS architecture.",
+    image: "/Envisage.jpg",
+  },
+  {
+    id: 3,
+    title: "AWS Cloud Core Member @ GGSIPU edc - 1 Year",
     subtitle: "Artificial Intelligence + Machine learning + deep learning + RAGs (retreival augmented generation)",
     description:
       "A key member in organizing and delivering technical workshops and events on Amazon Web Services (AWS), enhancing practical cloud computing skills for club members. Assisted in curriculum development and resource creation, promoting knowledge sharing on topics such as EC2, S3, Lambda, and IAM.",
@@ -47,7 +55,7 @@ const sampleExperience = [
   // add more items here
 ];
 
-export default function ProjectsScreen({ experience = sampleExperience, projects = sampleProjects }) {
+export default function ProjectsScreen({ experience = Experience, projects = Projects }) {
   const [index, setIndex] = useState(0);
   const [isProjects, setIsProjects] = useState(true);
   const [direction, setDirection] = useState(0); // -1 for left, 1 for right, 0 for none
@@ -219,8 +227,8 @@ export default function ProjectsScreen({ experience = sampleExperience, projects
               <div className="w-3 h-3 rounded-full bg-white/70" />
             )
           ) : (
-            sampleExperience.length ? (
-              sampleExperience.map((p, i) => (
+            Experience.length ? (
+              Experience.map((p, i) => (
                 <button
                   key={p.id}
                   onClick={() => goto(i)}
