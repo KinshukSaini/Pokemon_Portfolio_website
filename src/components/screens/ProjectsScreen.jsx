@@ -3,25 +3,25 @@ import Image from "next/image";
 const sampleProjects = [
   {
     id: 1,
-    title: "Pokedex UI",
-    subtitle: "React + Tailwind",
+    title: "AI Assisted Legal Document Editor for UK's Legislation",
+    subtitle: "VITE + CSS + MongoDB + AWS Cloud Services",
     description:
-      "A Pokemon-themed portfolio UI with a carousel-style project viewer, animations, and audio toggles.",
+      "A web application that leverages AI to assist users in editing legal documents, ensuring accuracy and compliance with the UK's legislation. Advanced RAG pipelines and techniques are utilized to provide context-aware suggestions and corrections. it supports over 28 document templates i.e. NDA, Contract Agreement, etc. along with this it also provides an AI chatbot-copilot to help users with their legal queries related to the document being edited.",
     image: "/Pokeball.png",
   },
   {
     id: 2,
-    title: "Portfolio Website",
-    subtitle: "Next.js",
+    title: "AI ThoughtChain – Conversational Interface with Thought Graphs",
+    subtitle: "Next.js + D3.js + RAG/Langgraph + Python/FastAPI + Vercel + ChromaDB",
     description:
-      "Personal portfolio built with Next.js, responsive design, and custom animations.",
+      "Built a full-stack conversational AI interface exploring ChatGPT functionality with visual cognitive mapping. Designed an interactive D3.js-based thought graph to visualize conversation flow and reasoning paths. Implemented contextual memory using embeddings to reconnect prior topics and visualize semantic trails. Added features like conversation collapsing, graph export, and multi-model switching to enhance usability.",
     image: "/file.svg",
   },
   {
     id: 3,
-    title: "Small Game",
-    subtitle: "Canvas / JS",
-    description: "Mini-game demo embedded as a project example.",
+    title: "AyushBridge",
+    subtitle: "Next.js/React + TailwindCSS + RAG/LangTech + Python/FastAPI + FHIR R4/PostgreSQL + Chrome Extension/Electron",
+    description: "AyushBridge links AYUSH (traditional Indian) diagnosis with modern healthcare standards (FHIR R4 and ICD-11).It solves the problem of data interoperability by providing dual coding—automatically mapping AYUSH diagnoses to ICD-11 using a Vector DB and Semantic Search (RAG). This functions as a 'Google Translate' for medical codes.The solution is delivered as a user-friendly Chrome Extension and an Electron-based desktop overlay to help healthcare professionals quickly create FHIR-compliant audit logs.",
     image: "/school-bag.svg",
   },
   // add more items here
@@ -30,33 +30,28 @@ const sampleProjects = [
 const sampleExperience = [
   {
     id: 1,
-    title: "Software Engineer Intern",
-    subtitle: "React + Tailwind",
+    title: "AI and Software Engineering - intern @ LexleyAI LLC",
+    subtitle: "VITE (Js + css) + MongoDB + AWS + LangChain + RAGs (retreival augmented generation) + Gemini API",
     description:
-      "A Pokemon-themed portfolio UI with a carousel-style project viewer, animations, and audio toggles.",
-    image: "/Pokeball.png",
+      "Contributed to the development of a legal technology platform, serving as a full-stack engineer and AI developer. My primary contribution was leading the creation of a legal AI chatbot using LangChain and Python, applying Retrieval-Augmented Generation (RAG) to parse UK legislation, ensuring responses were reliable, contextually relevant, and source-backed. I successfully integrated and optimized this ChatGPT-like interface for a production environment. Concurrently, I enhanced the core product by designing a dynamic interface for legal document automation, contributing to the development of 20+ preview-rendered templates and adaptive questionnaires using React, Node.js, JSON, and a modular JS architecture.",
+    image: "/lexley.png",
   },
   {
     id: 2,
-    title: "AWS Cloud Core ",
-    subtitle: "Next.js",
+    title: "AWS Cloud Core Membet @ GGSIPU edc",
+    subtitle: "Artificial Intelligence + Machine learning + deep learning + RAGs (retreival augmented generation)",
     description:
-      "Personal portfolio built with Next.js, responsive design, and custom animations.",
-    image: "/file.svg",
-  },
-  {
-    id: 3,
-    title: "Freelance Developer",
-    subtitle: "Canvas / JS",
-    description: "Mini-game demo embedded as a project example.",
-    image: "/school-bag.svg",
-  },
+      "A key member in organizing and delivering technical workshops and events on Amazon Web Services (AWS), enhancing practical cloud computing skills for club members. Assisted in curriculum development and resource creation, promoting knowledge sharing on topics such as EC2, S3, Lambda, and IAM.",
+    image: "/aws.png",
+  }
   // add more items here
 ];
 
 export default function ProjectsScreen({ experience = sampleExperience, projects = sampleProjects }) {
   const [index, setIndex] = useState(0);
   const [isProjects, setIsProjects] = useState(true);
+  const [direction, setDirection] = useState(0); // -1 for left, 1 for right, 0 for none
+  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
     const onKey = (e) => {
@@ -70,13 +65,37 @@ export default function ProjectsScreen({ experience = sampleExperience, projects
 
   const currentData = isProjects ? projects : experience;
   
-  const prev = () =>
-    setIndex((i) =>
-      currentData.length ? (i - 1 + currentData.length) % currentData.length : 0
-    );
-  const next = () =>
-    setIndex((i) => (currentData.length ? (i + 1) % currentData.length : 0));
-  const goto = (i) => setIndex(i);
+  const prev = () => {
+    if (isAnimating) return;
+    setDirection(-1);
+    setIsAnimating(true);
+    setTimeout(() => {
+      setIndex((i) =>
+        currentData.length ? (i - 1 + currentData.length) % currentData.length : 0
+      );
+      setIsAnimating(false);
+    }, 300);
+  };
+  
+  const next = () => {
+    if (isAnimating) return;
+    setDirection(1);
+    setIsAnimating(true);
+    setTimeout(() => {
+      setIndex((i) => (currentData.length ? (i + 1) % currentData.length : 0));
+      setIsAnimating(false);
+    }, 300);
+  };
+  
+  const goto = (i) => {
+    if (isAnimating) return;
+    setDirection(i > index ? 1 : -1);
+    setIsAnimating(true);
+    setTimeout(() => {
+      setIndex(i);
+      setIsAnimating(false);
+    }, 300);
+  };
 
   const currentItem = currentData.length ? currentData[index] : null;
 
@@ -137,7 +156,15 @@ export default function ProjectsScreen({ experience = sampleExperience, projects
       </button>
 
       {/* Big center card */}
-      <div className="bg-[#DBCBB0] rounded-[2vh] w-[75%] h-[70%] shadow-md absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-6 mt-8 z-49 text-box-shadow">
+      <div 
+        className={`bg-[#DBCBB0] rounded-[2vh] w-[75%] h-[70%] shadow-md absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-6 mt-8 z-49 text-box-shadow transition-all duration-200 ${
+          isAnimating 
+            ? direction === 1 
+              ? 'opacity-0 translate-x-[calc(-50%+100px)]' 
+              : 'opacity-0 translate-x-[calc(-50%-100px)]'
+            : 'opacity-100'
+        }`}
+      >
         {currentItem ? (
           <div className="h-full flex flex-col sm:flex-row gap-4">
               
@@ -146,7 +173,7 @@ export default function ProjectsScreen({ experience = sampleExperience, projects
                   <img
                     src={currentItem.image}
                     alt={currentItem.title}
-                    className="max-h-40 object-contain"
+                    className="max-h-90 object-contain"
                   />
                 ) : (
                   <div className="w-32 h-32 bg-gray-200 rounded-md" />
@@ -154,13 +181,13 @@ export default function ProjectsScreen({ experience = sampleExperience, projects
               </div>
 
               <div className="sm:w-2/3">
-                <h3 className="text-2xl font-extrabold mb-1">
+                <h3 className="text-[2rem] font-extrabold mb-1">
                   {currentItem.title}
                 </h3>
-                <p className="text-sm text-gray-600 font-semibold mb-3">
+                <p className="text-xl text-gray-600 font-semibold mb-3">
                   {currentItem.subtitle}
                 </p>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-[#40382B] text-[1.5rem] leading-relaxed">
                   {currentItem.description}
                 </p>
               </div>

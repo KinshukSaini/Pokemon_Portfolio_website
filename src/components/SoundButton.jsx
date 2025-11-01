@@ -1,12 +1,15 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { AudioContext } from "@/app/context";
 
 const SoundButton = () => {
   const [isPressed, setIsPressed] = useState(false);
+  const { mute, setMute } = useContext(AudioContext);
 
   const handleToggle = () => {
     setIsPressed(!isPressed);
+    setMute(!mute);
   };
 
   return (

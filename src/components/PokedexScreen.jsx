@@ -4,7 +4,6 @@ import AboutScreen from "./screens/AboutScreen";
 import ProjectsScreen from "./screens/ProjectsScreen";
 import ContactScreen from "./screens/ContactScreen";
 
-// Helper function to generate a single star's data
 const generateStar = (key, maxLeft, maxDelay) => ({
   key,
   left: `${Math.random() * maxLeft}%`,
@@ -13,14 +12,12 @@ const generateStar = (key, maxLeft, maxDelay) => ({
 });
 
 const PokedexScreen = ({ activeSection }) => {
-  // 1. Initialize state to hold the star data (empty array for SSR stability)
   const [starLayers, setStarLayers] = useState({
     fast: [],
     medium: [],
     slow: [],
   });
 
-  // 2. Use useEffect to generate the random data ONLY on the client
   useEffect(() => {
     const generateStars = (count, maxLeft, maxDelay, prefix) => {
       return [...Array(count)].map((_, i) =>
@@ -28,13 +25,12 @@ const PokedexScreen = ({ activeSection }) => {
       );
     };
 
-    // Calculate all star positions and delays
     setStarLayers({
       fast: generateStars(50, 200, 10, "fast"),
       medium: generateStars(30, 200, 15, "medium"),
       slow: generateStars(20, 200, 20, "slow"),
     });
-  }, []); // Empty dependency array ensures this runs only once after initial render (on client)
+  }, []);
 
   const renderContent = () => {
     switch (activeSection) {
@@ -53,7 +49,7 @@ const PokedexScreen = ({ activeSection }) => {
 
   return (
     <div
-      className="h-[83vh] w-[98vw] bg-gradient-to-r from-[#2B343A] to-[#0D1C23] stroke-[1px] border-[1.8vh] border-[#5D6BAD] rounded-[60px] flex items-center justify-center relative overflow-visible
+      className="h-[83vh] w-[98vw] bg-gradient-to-r from-[#2B343A] to-[#0D1C23] stroke-[1px] border-[1.8vh] border-[#5D6BAD] rounded-[60px] flex items-center justify-center overflow-visible
       absolute left-1/2 -translate-x-1/2"
     >
       {/* Animated Starfield Background */}
@@ -107,7 +103,6 @@ const PokedexScreen = ({ activeSection }) => {
           ))}
         </div>
       </div>
-
       {/* Content */}
       {renderContent()}
     </div>

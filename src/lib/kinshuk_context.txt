@@ -1,0 +1,75 @@
+Profile Summary of Kinshuk Saini
+🎓 Student Background
+
+Kinshuk is currently pursuing a B.Tech in Artificial Intelligence and Data Science from the University School of Automation and Robotics, GGSIPU, New Delhi.
+
+CGPA (as of 2025): 7.91/10.
+
+He has a strong foundation in Machine Learning, Deep Learning, Web Development, and Data Science, with hands-on experience in TensorFlow, PyTorch, Keras, Scikit-learn, NumPy, and Pandas.
+
+He has worked with YOLO and RCNN for crater and boulder detection on the moon during an ISRO Hackathon, focusing on the lunar poles for terrain and landing safety.
+
+He has also used the Celeb-DF v2 dataset for deepfake detection research and developed multimodal models combining image and text data.
+
+In addition to AI/ML, Kinshuk is a proficient full-stack web developer skilled in MERN Stack, Next.js, Tailwind CSS, and TypeScript. He enjoys building clean, performant, and scalable applications, from responsive frontends to data-driven backends.
+
+He frequently works on feature engineering, transformer-based architectures, and deployment pipelines through frameworks like Streamlit, FastAPI, Flask, and Docker.
+
+💼 Professional and Project Experience
+🌍 Zanger LLC, United Kingdom — AI and Software Engineering Intern (Feb 2025 – Jul 2025)
+
+Contributed to a legal document automation platform, developing dynamic UI templates (20+ types) and modular JSON-based forms.
+
+Built an AI chatbot using LangChain and Retrieval-Augmented Generation (RAG) for parsing and answering UK legislation-related queries.
+
+Integrated the chatbot with the platform UI and optimized it for legal reliability and production stability.
+
+Tech Stack: LangChain, Python, React, Node.js, MongoDB, Tailwind CSS.
+
+🧩 Key Projects
+
+ISRO Hackathon: ML-based crater and boulder detection using YOLO and RCNN.
+
+AI ThoughtChain (SaaS Project): Developed a ChatGPT-style conversational web app with Next.js, FastAPI, and D3.js, featuring real-time thought graph visualizations and contextual memory.
+
+Multi-Manufacturing Platform (Freelance): Designed and deployed a Next.js + Tailwind CSS full-stack application with dynamic product catalogs, responsive UI, and client-facing inquiry workflows.
+
+Amazon Multimodal Price Prediction Challenge: Created a deep learning pipeline combining text (Deberta) and image embeddings, ranking top 500 out of 85,000+ participants.
+
+Image Upscaling Project: Built an ESRGAN-based upscaler to enhance low-resolution images using Streamlit for deployment.
+
+Green Energy Tokenization System: Designed a reward-based energy conservation platform, integrating smart usage tracking and token-based incentives.
+
+💻 Technical Skills
+
+Programming Languages: Python, C++, C, JavaScript, HTML, CSS, TypeScript
+
+Web Development: MERN Stack (MongoDB, Express.js, React.js, Node.js), Next.js, Tailwind CSS, REST APIs
+
+Frameworks & Tools: LangChain, Flask, FastAPI, Streamlit, Docker, Git
+
+AI/ML Frameworks: TensorFlow, Keras, PyTorch, Hugging Face, Scikit-learn
+
+Specializations: NLP, RAG Systems, Multimodal Learning, Data Structures & Algorithms, UI/UX Logic Flow
+
+🧠 Personality and Interests
+
+Kinshuk identifies as INTP, characterized by analytical reasoning, logical curiosity, and experimental problem-solving.
+
+He values correctness over efficiency and prefers minimal, clean code for clarity and maintainability.
+
+Outside academics, he plays guitar (including Japanese-style tunings) and enjoys a wide range of games — from Valorant and Clash Royale to Hollow Knight, Phasmophobia, Chess, Genshin Impact, and Dark Souls.
+
+He maintains a disciplined routine balancing college, gym, study, gaming, and music, reflecting his structured yet creative personality.
+
+His mindset reflects deep curiosity — often visualizing complex ideas (like median finders or neural logic) to build strong intuitive understanding.
+
+🏅 Certifications and Achievements
+
+Participated in 8+ Hackathons.
+
+NASA x STEMlikeher Hackathon (Sound of Space Project): Ranked 7th globally among 850+ teams.
+
+Amazon ML Challenge 2025: Ranked 482 out of 85,000+ participants.
+
+Udemy: Completed “Complete Machine Learning with NLP Bootcamp.”

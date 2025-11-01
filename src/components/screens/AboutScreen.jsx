@@ -4,7 +4,7 @@ import { RadarChart } from "../RadarGraph";
 const AboutScreen = () => {
   const initialStats = [
     { label: "Web Development", value: 48, max: 50 },
-    { label: "AI & ML", value: 44, max: 50 },
+    { label: "ML & DL", value: 44, max: 50 },
     { label: "Data Science", value: 44, max: 50 },
     { label: "Problem Solving", value: 50, max: 50 },
     { label: "DS & Algo", value: 47, max: 50 },
@@ -29,32 +29,32 @@ const AboutScreen = () => {
         <div className="w-[40%] h-[100%] p-4 bg-[#DBCBB0] rounded-[3vh] text-box-shadow">
           <div className="w-[100%] h-[100%] bg-[#FEF6EA] rounded-[3vh] p-10">
             <div className="grid grid-cols-[auto_1fr] gap-x-8 gap-y-3 items-center">
-              <span className="text-black font-semibold text-[2rem]">Name</span>
-              <span className="text-black text-[2rem]">Kinshuk Saini</span>
+              <span className="text-black font-semibold text-[1.8rem]">Name</span>
+              <span className="text-black text-[1.8rem]">Kinshuk Saini</span>
 
-              <span className="text-black font-semibold text-[2rem]">Age</span>
-              <span className="text-black text-[2rem]">20 (3rd year)</span>
+              <span className="text-black font-semibold text-[1.8rem]">Age</span>
+              <span className="text-black text-[1.8rem]">20 (3rd year)</span>
 
-              <span className="text-black font-semibold text-[2rem]">
+              <span className="text-black font-semibold text-[1.8rem]">
                 Rarity
               </span>
               <div className="flex gap-8">
-                <span className="text-[2rem] bg-[#DE4141] text-white px-[4%] rounded-[1vh]">
+                <span className="text-[1.8rem] bg-[#DE4141] text-white px-[4%] rounded-[1vh]">
                   Mythic
                 </span>
               </div>
 
-              <span className="text-black font-semibold text-[2rem]">
+              <span className="text-black font-semibold text-[1.8rem]">
                 Region
               </span>
-              <span className="text-black text-[2rem]">New Delhi, India</span>
+              <span className="text-black text-[1.8rem]">New Delhi, India</span>
 
-              <span className="text-black font-semibold text-[2rem]">type</span>
+              <span className="text-black font-semibold text-[1.8rem]">type</span>
               <div className="flex gap-8">
-                <span className="text-[2rem] bg-[#8DCA77] text-white px-[4%] rounded-[1vh]">
+                <span className="text-[1.8rem] bg-[#8DCA77] text-white px-[4%] rounded-[1vh]">
                   Web Dev
                 </span>
-                <span className="text-[2rem] bg-[#4185DE] text-white px-[4%] rounded-[1vh]">
+                <span className="text-[1.8rem] bg-[#4185DE] text-white px-[4%] rounded-[1vh]">
                   AI & DL
                 </span>
               </div>
