@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useRef } from "react";
 import Circles from "@/components/Circles";
 import Image from "next/image";
 import { useChatbot } from "@/hooks/useChatbot";
@@ -8,17 +8,35 @@ const HomeScreen = () => {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [fullText, setFullText] = useState("Welcome to kinshuk's portfolio!, feel free to ask me anything about him or if you feel geeky enough, ask me to tell you a pokemon fact!");
   const [userInput, setUserInput] = useState("");
+  const [currentPage, setCurrentPage] = useState(0);
+  const textContainerRef = useRef(null);
   const { sendMessage, isLoading } = useChatbot();
-  const displayedText = useTypewriter(isLoading ? "" : fullText, 9);
+  
+  const CHARS_PER_PAGE = 300; // Approximate characters that fit
+  const pages = [];
+  if (fullText) {
+    for (let i = 0; i < fullText.length; i += CHARS_PER_PAGE) {
+      pages.push(fullText.slice(i, i + CHARS_PER_PAGE));
+    }
+  }
+  const currentPageText = pages[currentPage] || "";
+  const hasMorePages = currentPage < pages.length - 1;
+
+  const { displayedText, isFinished, finish } = useTypewriter(isLoading ? "" : currentPageText, 9);
 
   useEffect(() => {
     // Manage the speaking state based on the typewriter effect
-    if (displayedText.length > 0 && displayedText.length < fullText.length) {
+    if (!isFinished && displayedText.length > 0) {
       setIsSpeaking(true);
     } else {
       setIsSpeaking(false);
     }
-  }, [displayedText, fullText]);
+  }, [displayedText, isFinished]);
+
+  // Reset to first page when new text arrives
+  useEffect(() => {
+    setCurrentPage(0);
+  }, [fullText]);
 
   const handleSendMessage = async () => {
     if (isLoading || !userInput.trim()) return;
@@ -31,6 +49,16 @@ const HomeScreen = () => {
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       handleSendMessage();
+    }
+  };
+
+  const handleInteraction = () => {
+    if (!isFinished) {
+      // If typing, finish the current page instantly
+      finish();
+    } else if (hasMorePages) {
+      // If finished and more pages exist, go to the next page
+      setCurrentPage(prev => prev + 1);
     }
   };
 
@@ -73,17 +101,27 @@ const HomeScreen = () => {
 
       <div className="h-[90%] w-[60%]">
         {/* Chat Box */}
-        <div className="relative w-full max-w-[1000px] m-auto">
+        <div 
+          className="relative w-full max-w-[1000px] m-auto cursor-pointer"
+          onClick={handleInteraction}
+        >
           <Image src="/chatBox2.png" width={1000} height={400} alt="Chat Box" />
 
           {/* overlay div on top of the image */}
-          <div className="absolute inset-0 z-10 m-12 mr-20 left-[1%] text-2xl">
+          <div ref={textContainerRef} className="absolute inset-0 z-10 m-12 mr-20 left-[1%] text-2xl overflow-hidden">
             {isLoading ? (
               <div className="flex items-center justify-center h-full text-center text-gray-400 animate-pulse">
                 ...
               </div>
             ) : (
-              displayedText
+              <>
+                {displayedText}
+                {isFinished && hasMorePages && (
+                  <div className="absolute bottom-2 right-4 animate-bounce">
+                    <span className="text-4xl text-gray-700">▼</span>
+                  </div>
+                )}
+              </>
             )}
           </div>
         </div>
@@ -95,7 +133,7 @@ const HomeScreen = () => {
             onChange={(e) => setUserInput(e.target.value)}
             onKeyPress={handleKeyPress}
             className="flex-1 rounded-md border-0 border-b-2 border-transparent text-white focus:border-blue-500 focus:border-b-2 focus:outline-none focus:ring-0 transition-all text-2xl pb-4"
-            placeholder="Type your message here..."
+            placeholder="ask something..."
           />
           {userInput.trim() !== "" && (
             <button 

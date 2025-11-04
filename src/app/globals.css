@@ -8,6 +8,16 @@
   letter-spacing: 1px;
 }
 
+html{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    /* CRITICAL: Prevent page-level scrollbar that causes flicker */
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
 body{
   margin: 0;
   padding: 0;
@@ -21,13 +31,8 @@ body{
   #F75A52 74%, 
   #882D28 95%
   );
-}
-
-html{
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
+  /* CRITICAL: Prevent page-level scrollbar that causes flicker */
+  overflow: hidden;
 }
 /* Star Animation Keyframes */
 @keyframes star-scroll-fast {
@@ -90,4 +95,51 @@ html{
 }
 .icon-box-shadow {
   box-shadow: 4px 9px 0.2px 0 #0000007e;
+}
+/* Scrollbar Styles (Applies globally or to a specific container) */
+::-webkit-scrollbar {
+  width: 2rem;
+  padding: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background-color: #DCD7D0;
+  
+  /* Retaining the transparent border for the 3D shadow effect */
+  border: 0.6rem solid transparent; 
+  
+  /* Retaining your specific shadow for the drop shadow look */
+  box-shadow: 9px 7px 0.2px 0 rgba(0,0,0,0.5); 
+}
+
+/* Apply this to your main beige content container */
+.beige-card { 
+  /* 🚨 CRITICAL FIX: Forces the scrollbar to be rendered or at least reserve its space */
+  overflow-y: scroll;
+  
+  /* RECOMMENDED MODERN ADDITION: Eliminates content jump when scrollbar appears/disappears */
+  scrollbar-gutter: stable; 
+  
+  /* Optional: Set a fixed height if your design allows it, as this is the most reliable way 
+     to prevent height recalculations that cause the flicker. */
+  /* height: 500px; */ 
+}
+
+/* Custom scrollbar for ProjectsScreen descriptions - INVISIBLE scrollbar */
+.scrollbar-custom {
+  overflow-y: auto;
+  
+  /* Hide scrollbar for Firefox */
+  scrollbar-width: none;
+  
+  /* Hide scrollbar for IE/Edge */
+  -ms-overflow-style: none;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-custom::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }

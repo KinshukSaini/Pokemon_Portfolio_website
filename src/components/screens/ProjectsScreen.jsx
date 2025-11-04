@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 const Projects = [
   {
@@ -60,6 +60,7 @@ export default function ProjectsScreen({ experience = Experience, projects = Pro
   const [isProjects, setIsProjects] = useState(true);
   const [direction, setDirection] = useState(0); // -1 for left, 1 for right, 0 for none
   const [isAnimating, setIsAnimating] = useState(false);
+  const descriptionScrollRef = useRef(null);
 
   useEffect(() => {
     const onKey = (e) => {
@@ -70,6 +71,13 @@ export default function ProjectsScreen({ experience = Experience, projects = Pro
     return () => window.removeEventListener("keydown", onKey);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [index]);
+
+  // Reset scroll position when switching tabs or items
+  useEffect(() => {
+    if (descriptionScrollRef.current) {
+      descriptionScrollRef.current.scrollTop = 0;
+    }
+  }, [isProjects, index]);
 
   const currentData = isProjects ? projects : experience;
   
@@ -165,7 +173,7 @@ export default function ProjectsScreen({ experience = Experience, projects = Pro
 
       {/* Big center card */}
       <div 
-        className={`bg-[#DBCBB0] rounded-[2vh] w-[75%] h-[70%] shadow-md absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-6 mt-8 z-49 text-box-shadow transition-all duration-200 ${
+        className={`bg-[#DBCBB0] rounded-[2vh] w-[75%] h-[70%] shadow-md absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-6 mt-8 z-49 text-box-shadow transition-all duration-200 overflow-hidden ${
           isAnimating 
             ? direction === 1 
               ? 'opacity-0 translate-x-[calc(-50%+100px)]' 
@@ -174,9 +182,9 @@ export default function ProjectsScreen({ experience = Experience, projects = Pro
         }`}
       >
         {currentItem ? (
-          <div className="h-full flex flex-col sm:flex-row gap-4">
+          <div className="h-full flex flex-col sm:flex-row gap-4 min-h-0">
               
-              <div className="sm:w-1/3 flex items-center justify-center">
+              <div className="sm:w-1/3 flex items-center justify-center flex-shrink-0">
                 {currentItem.image ? (
                   <img
                     src={currentItem.image}
@@ -188,16 +196,18 @@ export default function ProjectsScreen({ experience = Experience, projects = Pro
                 )}
               </div>
 
-              <div className="sm:w-2/3">
-                <h3 className="text-[2rem] font-extrabold mb-1">
+              <div className="sm:w-2/3 flex flex-col min-h-0">
+                <h3 className="text-[2rem] font-extrabold mb-1 flex-shrink-0">
                   {currentItem.title}
                 </h3>
-                <p className="text-xl text-gray-600 font-semibold mb-3">
+                <p className="text-xl text-gray-600 font-semibold mb-3 flex-shrink-0">
                   {currentItem.subtitle}
                 </p>
-                <p className="text-[#40382B] text-[1.5rem] leading-relaxed">
-                  {currentItem.description}
-                </p>
+                <div ref={descriptionScrollRef} className="overflow-y-scroll pr-4 scrollbar-custom flex-1 min-h-0">
+                  <p className="text-[#40382B] text-[1.5rem] leading-relaxed">
+                    {currentItem.description}
+                  </p>
+                </div>
               </div>
             </div>
           ) : (
