@@ -97,6 +97,7 @@ export const RadarChart = ({ stats }) => {
                     ))}
                     {/* Inner 50% Grid Polygon */}
                     <polygon
+                        key="inner-grid"
                         points={innerPointsString}
                         className="fill-transparent stroke-current stroke-1"
                         style={{ stroke: '#ccc' }}
@@ -105,12 +106,14 @@ export const RadarChart = ({ stats }) => {
 
                 {/* 2. Outer Boundary (Hexagon) */}
                 <polygon
+                    key="outer-boundary"
                     points={boundaryPointsString}
                     className="fill-transparent stroke-blue-400 stroke-2"
                 />
 
                 {/* 3. Data Polygon (Blue Shaded Area) */}
                 <polygon
+                    key="data-polygon"
                     points={dataPointsString}
                     className="fill-blue-500/50 stroke-blue-700 stroke-[2.5]"
                     strokeLinejoin="round"
