@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Koulen&display=swap");
 @import "tailwindcss";
 @tailwind base;
 @tailwind components;
@@ -23,7 +22,7 @@ body{
   padding: 0;
   height: 100%;
   width: 100%;
-  font-family: "Koulen", cursive;
+  font-family: var(--font-koulen), cursive;
   background: linear-gradient(
   to right, 
   #7F231F 5%, 
