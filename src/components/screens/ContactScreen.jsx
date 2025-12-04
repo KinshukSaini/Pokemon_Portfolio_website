@@ -16,7 +16,7 @@ const ContactScreen = () => {
           />
         </div>
 
-        <div className="flex flex-row absolute left-1/2 -translate-x-1/2 bottom-1/8 ">
+        <div className="flex flex-row absolute left-1/2 -translate-x-1/2 bottom-1/8">
           <div className="bg-[#E2BE82] h-[80px] w-[90px] rounded-[1.7vh] flex items-center justify-center icon-box-shadow mx-[2vh]">
             <Image src="/git.svg" width={50} height={50} alt="GitHub" />
           </div>
@@ -31,8 +31,10 @@ const ContactScreen = () => {
           </div>
         </div>
       </div>
-
-      <div className="bg-[#DBCBB0] text-[#40382B] -[50%] w-[43%] absolute right-1/6 translate-x-1/4 top-1/4 -translate-y-1/4 text-[1.8rem]">
+      {/* ending phrase */}
+      <div className="text-[#40382B] w-[43%] absolute right-1/6 
+      max-[1500px]:right-1/10
+      translate-x-1/4 top-1/4 -translate-y-1/4 text-[1.6rem] lg:text-[1.6rem] md:text-[1.2rem] sm:text-[1rem]  pr-4">
       I am actively seeking new project opportunities and am eager to connect with like-minded individuals and teams. If you have a project in mind or an idea to discuss, let's get in touch! 
       </div>
     </div>

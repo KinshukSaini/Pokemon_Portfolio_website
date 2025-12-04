@@ -97,19 +97,26 @@ body{
 }
 /* Scrollbar Styles (Applies globally or to a specific container) */
 ::-webkit-scrollbar {
-  width: 2rem;
-  padding: 0.5rem;
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 20px;
-  background-color: #DCD7D0;
-  
-  /* Retaining the transparent border for the 3D shadow effect */
-  border: 0.6rem solid transparent; 
-  
-  /* Retaining your specific shadow for the drop shadow look */
-  box-shadow: 9px 7px 0.2px 0 rgba(0,0,0,0.5); 
+  background: linear-gradient(180deg, #888, #555);
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #555, #333);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #222;
 }
 
 /* Apply this to your main beige content container */

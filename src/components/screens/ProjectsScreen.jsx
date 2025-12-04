@@ -153,7 +153,7 @@ export default function ProjectsScreen({ experience = Experience, projects = Pro
       <button
         onClick={prev}
         aria-label="Previous project"
-        className="absolute left-15 top-56/100 -translate-y-1/2 bg-[#DBCBB0] sm:w-[82px] h-[65%] rounded-xl flex items-center justify-center text-box-shadow z-50 transition-transform duration-100 active:translate-y-[calc(-50%+4px)] hover:brightness-95"
+        className="absolute left-4 top-56/100 -translate-y-1/2 bg-[#DBCBB0] w-[82px] h-[65%] rounded-xl flex items-center justify-center text-box-shadow z-50 transition-transform duration-100 active:translate-y-[calc(-50%+4px)] hover:brightness-95"
       >
         <span className="text-2xl font-bold transform text-gray-700">
           <img src="/left-nav.png" alt="Left Arrow" width={24} height={24} />
@@ -164,7 +164,7 @@ export default function ProjectsScreen({ experience = Experience, projects = Pro
       <button
         onClick={next}
         aria-label="Next project"
-        className="absolute right-15 top-56/100 -translate-y-1/2 bg-[#DBCBB0] sm:w-[82px] h-[65%] rounded-xl flex items-center justify-center text-box-shadow z-50 transition-transform duration-100 active:translate-y-[calc(-50%+4px)] hover:brightness-95"
+        className="absolute right-4 top-56/100 -translate-y-1/2 bg-[#DBCBB0] w-[82px] h-[65%] rounded-xl flex items-center justify-center text-box-shadow z-52 transition-transform duration-100 active:translate-y-[calc(-50%+4px)] hover:brightness-95"
       >
         <span className="text-2xl font-bold transform rotate-180 text-gray-700 ">
           <img src="/left-nav.png" alt="Right Arrow" width={24} height={24} />
@@ -173,7 +173,7 @@ export default function ProjectsScreen({ experience = Experience, projects = Pro
 
       {/* Big center card */}
       <div 
-        className={`bg-[#DBCBB0] rounded-[2vh] w-[75%] h-[70%] shadow-md absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-6 mt-8 z-49 text-box-shadow transition-all duration-200 overflow-hidden ${
+        className={`bg-[#DBCBB0] rounded-[2vh] w-[calc(100%-230px)] max-w-[1200px] h-[70%] shadow-md absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-6 mt-8 z-51 text-box-shadow transition-all duration-200 overflow-hidden ${
           isAnimating 
             ? direction === 1 
               ? 'opacity-0 translate-x-[calc(-50%+100px)]' 
@@ -204,7 +204,7 @@ export default function ProjectsScreen({ experience = Experience, projects = Pro
                   {currentItem.subtitle}
                 </p>
                 <div ref={descriptionScrollRef} className="overflow-y-scroll pr-4 scrollbar-custom flex-1 min-h-0">
-                  <p className="text-[#40382B] text-[1.5rem] leading-relaxed">
+                  <p className="text-[#40382B] text-[1.5rem] leading-relaxed ">
                     {currentItem.description}
                   </p>
                 </div>

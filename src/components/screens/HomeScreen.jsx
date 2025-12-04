@@ -12,7 +12,7 @@ const HomeScreen = () => {
   const textContainerRef = useRef(null);
   const { sendMessage, isLoading } = useChatbot();
   
-  const CHARS_PER_PAGE = 300; // Approximate characters that fit
+  const CHARS_PER_PAGE = 200; // Approximate characters that fit
   const pages = [];
   if (fullText) {
     for (let i = 0; i < fullText.length; i += CHARS_PER_PAGE) {

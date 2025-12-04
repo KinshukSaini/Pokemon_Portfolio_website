@@ -41,7 +41,7 @@ export async function getChatResponse(input, apiKey) {
 
       Based on your persona and the provided context, have a friendly conversation with the user. Keep your answers concise and conversational.
       
-      * dont use markups in response*
+      *dont use markups in response and avoid typos*
 
       The user's message is: "${input}"
     `;

@@ -27,7 +27,8 @@ const AboutScreen = () => {
 
         {/* stats */}
         <div className="w-[40%] h-[100%] p-4 bg-[#DBCBB0] rounded-[3vh] text-box-shadow">
-          <div className="w-[100%] h-[100%] bg-[#FEF6EA] rounded-[3vh] p-10">
+          {/* text field */}
+          <div className="w-[100%] h-[100%] bg-[#FEF6EA] rounded-[3vh] p-10 overflow-auto">
             <div className="grid grid-cols-[auto_1fr] gap-x-8 gap-y-3 items-center">
               <span className="text-black font-semibold text-[1.8rem]">Name</span>
               <span className="text-black text-[1.8rem]">Kinshuk Saini</span>
@@ -65,7 +66,7 @@ const AboutScreen = () => {
 
       {/* lower section */}
       <div className=" h-[43%] w-[100%] p-2 flex flex-row justify-center gap-[5%]">
-        <div className="w-[81.5%] h-[97%] bg-[#DBCBB0] rounded-[3vh] text-box-shadow p-7 px-12 text-[1.5rem] text-[#40382B]">
+        <div className="w-[81.5%] h-[97%] bg-[#DBCBB0] rounded-[3vh] text-box-shadow p-7 px-12 text-[1.5rem] text-[#40382B] overflow-auto">
 "KINSHUK SAINI, THE MYTHIC-CLASS DEVELOPER. THIS POKÉMON SPECIALIZES IN FULL-STACK WEB DEVELOPMENT USING REACT AND NEXT.JS, WHILE SIMULTANEOUSLY HARNESSING THE POWER OF GENERATIVE AI AND DEEP LEARNING. NOTABLE ABILITIES INCLUDE RAPID PROTOTYPING, SCALABLE ARCHITECTURE, AND ALGORITHMIC PRECISION. A GO-TO FOR HACKATHONS AND PROJECTS REQUIRING BOTH CREATIVITY AND COMPLEX PROBLEM-SOLVING."
         </div>
       </div>
