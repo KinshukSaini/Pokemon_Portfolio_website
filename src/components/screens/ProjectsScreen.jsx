@@ -116,8 +116,9 @@ export default function ProjectsScreen({ experience = Experience, projects = Pro
   const currentItem = currentData.length ? currentData[index] : null;
 
   return (
-    <section className="w-full">
-      <div className="absolute z-20 top-6 left-1/2 -translate-x-1/2 flex gap-[10vw]">
+    <section className="w-full h-full relative">
+      {/* Desktop tabs (buttons) */}
+      <div className="hidden md:flex absolute z-10 top-6 left-1/2 -translate-x-1/2 md:gap-[10vw] gap-[5vw]">
         {/* Button 1 */}
         <button
           type="button"
@@ -128,7 +129,7 @@ export default function ProjectsScreen({ experience = Experience, projects = Pro
           aria-pressed={isProjects}
           className={`${
             isProjects ? "bg-[#DBCBB0]" : "bg-[#C0AD8F] translate-y-1"
-          } w-[30vw] h-[80px] max-w-[600px] flex items-center justify-center text-center text-[30px] rounded-[2vh] cursor-pointer text-box-shadow`}
+          } md:w-[30vw] w-[40vw] h-[80px] max-w-[600px] flex items-center justify-center text-center text-[30px] rounded-[2vh] cursor-pointer text-box-shadow`}
         >
           PROJECTS
         </button>
@@ -143,35 +144,57 @@ export default function ProjectsScreen({ experience = Experience, projects = Pro
           aria-pressed={!isProjects}
           className={`${
             !isProjects ? "bg-[#DBCBB0]" : "bg-[#C0AD8F] translate-y-1"
-          } w-[30vw] h-[80px] max-w-[600px] flex items-center justify-center text-center text-[30px] rounded-[2vh] cursor-pointer text-box-shadow`}
+          } md:w-[30vw] w-[45vw] h-[80px] max-w-[600px] flex items-center justify-center text-center text-[30px] rounded-[2vh] cursor-pointer text-box-shadow`}
         >
           EXPERIENCE
         </button>
       </div>
 
-      {/* Left vertical nav */}
+      {/* Mobile full-width segmented tabs */}
+      <div className="md:hidden absolute top-4 left-0 right-0 z-30 px-4">
+        <div className="grid grid-cols-2 w-full rounded-[2vh] overflow-hidden border-2 border-[#DBCBB0] bg-[#C0AD8F]">
+          <button
+            type="button"
+            onClick={() => { setIsProjects(true); setIndex(0); }}
+            aria-pressed={isProjects}
+            className={`${isProjects ? 'bg-[#DBCBB0]' : 'bg-transparent'} text-[#40382B] py-3 text-center font-semibold border-r-2 border-[#DBCBB0]`}
+          >
+            PROJECTS
+          </button>
+          <button
+            type="button"
+            onClick={() => { setIsProjects(false); setIndex(0); }}
+            aria-pressed={!isProjects}
+            className={`${!isProjects ? 'bg-[#DBCBB0]' : 'bg-transparent'} text-[#40382B] py-3 text-center font-semibold`}
+          >
+            EXPERIENCE
+          </button>
+        </div>
+      </div>
+
+      {/* Left vertical nav (desktop only) */}
       <button
         onClick={prev}
         aria-label="Previous project"
-        className="absolute left-4 top-56/100 -translate-y-1/2 bg-[#DBCBB0] w-[82px] h-[65%] rounded-xl flex items-center justify-center text-box-shadow z-50 transition-transform duration-100 active:translate-y-[calc(-50%+4px)] hover:brightness-95"
+        className="hidden md:flex absolute left-4 top-56/100 -translate-y-1/2 bg-[#DBCBB0] w-[82px] h-[65%] rounded-xl items-center justify-center text-box-shadow z-50 transition-transform duration-100 active:translate-y-[calc(-50%+4px)] hover:brightness-95"
       >
         <span className="text-2xl font-bold transform text-gray-700">
           <img src="/left-nav.png" alt="Left Arrow" width={24} height={24} />
         </span>
       </button>
 
-      {/* Right vertical nav */}
+      {/* Right vertical nav (desktop only) */}
       <button
         onClick={next}
         aria-label="Next project"
-        className="absolute right-4 top-56/100 -translate-y-1/2 bg-[#DBCBB0] w-[82px] h-[65%] rounded-xl flex items-center justify-center text-box-shadow z-52 transition-transform duration-100 active:translate-y-[calc(-50%+4px)] hover:brightness-95"
+        className="hidden md:flex absolute right-4 top-56/100 -translate-y-1/2 bg-[#DBCBB0] w-[82px] h-[65%] rounded-xl items-center justify-center text-box-shadow z-52 transition-transform duration-100 active:translate-y-[calc(-50%+4px)] hover:brightness-95"
       >
         <span className="text-2xl font-bold transform rotate-180 text-gray-700 ">
           <img src="/left-nav.png" alt="Right Arrow" width={24} height={24} />
         </span>
       </button>
 
-      {/* Big center card */}
+      {/* Big center card (desktop) */}
       <div 
         className={`bg-[#DBCBB0] rounded-[2vh] w-[calc(100%-230px)] max-w-[1200px] h-[70%] shadow-md absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-6 mt-8 z-51 text-box-shadow transition-all duration-200 overflow-hidden ${
           isAnimating 
@@ -179,7 +202,7 @@ export default function ProjectsScreen({ experience = Experience, projects = Pro
               ? 'opacity-0 translate-x-[calc(-50%+100px)]' 
               : 'opacity-0 translate-x-[calc(-50%-100px)]'
             : 'opacity-100'
-        }`}
+        } hidden md:block`}
       >
         {currentItem ? (
           <div className="h-full flex flex-col sm:flex-row gap-4 min-h-0">
@@ -219,8 +242,8 @@ export default function ProjectsScreen({ experience = Experience, projects = Pro
             {/* subtle drop shadow under the card removed per inspect request */}
         </div>
 
-        {/* Dots pagination */}
-        <div className="flex absolute bottom-8 left-1/2 transform -translate-x-1/2 items-center justify-center gap-3 mt-6">
+        {/* Dots pagination (desktop) */}
+        <div className="hidden md:flex absolute bottom-8 left-1/2 transform -translate-x-1/2 items-center justify-center gap-3 mt-6">
           {isProjects ? (
             projects.length ? (
               projects.map((p, i) => (
@@ -253,6 +276,26 @@ export default function ProjectsScreen({ experience = Experience, projects = Pro
             )
           )}
         </div>
+
+      {/* Mobile list view (scrollable) */}
+      <div className="md:hidden relative w-full px-4 mt-[110px] pb-6 h-[80  %] overflow-y-auto">
+        {(isProjects ? projects : experience).map((item) => (
+          <div key={item.id} className="bg-[#DBCBB0] rounded-[2vh] text-box-shadow p-4 mb-5">
+            <div className="flex items-center gap-4">
+              {item.image ? (
+                <img src={item.image} alt={item.title} className="w-20 h-20 object-contain" />
+              ) : (
+                <div className="w-20 h-20 bg-gray-200 rounded-md" />
+              )}
+              <div className="flex-1">
+                <h3 className="text-xl font-extrabold mb-1">{item.title}</h3>
+                <p className="text-sm text-gray-700 font-semibold">{item.subtitle}</p>
+              </div>
+            </div>
+            <p className="text-[#40382B] text-[1rem] leading-relaxed mt-3">{item.description}</p>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }
