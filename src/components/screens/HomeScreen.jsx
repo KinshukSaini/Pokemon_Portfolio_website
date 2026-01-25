@@ -63,10 +63,10 @@ const HomeScreen = () => {
   };
 
   return (
-    <div className="z-10 absolute flex flex-row items-center justify-center h-full w-full gap-[5%]">
-      <div className="h-[90%] w-[30%]">
+    <div className="z-10 absolute flex flex-col xl:flex-row items-center justify-center h-full w-full gap-[5%]">
+      <div className="h-[40%] xl:h-[90%] w-[80%] xl:w-[30%]">
         {/* Circles */}
-        <div className="absolute z-9 left-1/15 top-1/2 -translate-y-1/2">
+        <div className="absolute z-9 left-1/2 xl:left-1/15 top-1/4 xl:top-1/2 -translate-x-1/2 xl:-translate-x-0 -translate-y-1/2">
           <Circles />
           {/* Speaker Image */}
           <div className="absolute z-10 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -76,7 +76,7 @@ const HomeScreen = () => {
                 width={501}
                 height={771}
                 alt="Doctor Oak Thinking"
-                className="scale-150"
+                className="scale-110 xl:scale-150"
               />
             ) : isSpeaking ? (
               <Image
@@ -84,7 +84,7 @@ const HomeScreen = () => {
                 width={501}
                 height={772}
                 alt="Doctor Oak Speaking"
-                className="scale-150"
+                className="scale-110 xl:scale-150"
               />
             ) : (
               <Image
@@ -92,14 +92,14 @@ const HomeScreen = () => {
                 width={501}
                 height={771}
                 alt="Doctor Oak Passive"
-                className="scale-150"
+                className="scale-110 xl:scale-150"
               />
             )}
           </div>
         </div>
       </div>
 
-      <div className="h-[90%] w-[60%]">
+      <div className="h-[60%] xl:h-[90%] w-[90%] xl:w-[60%]">
         {/* Chat Box */}
         <div 
           className="relative w-full max-w-[1000px] m-auto cursor-pointer"
@@ -108,7 +108,7 @@ const HomeScreen = () => {
           <Image src="/chatBox2.png" width={1000} height={400} alt="Chat Box" />
 
           {/* overlay div on top of the image */}
-          <div ref={textContainerRef} className="absolute inset-0 z-10 m-12 mr-20 left-[1%] text-2xl overflow-hidden">
+          <div ref={textContainerRef} className="absolute inset-0 z-10 m-8 xl:m-12 mr-16 xl:mr-20 left-[1%] text-xl xl:text-2xl overflow-hidden">
             {isLoading ? (
               <div className="flex items-center justify-center h-full text-center text-gray-400 animate-pulse">
                 ...
@@ -118,7 +118,7 @@ const HomeScreen = () => {
                 {displayedText}
                 {isFinished && hasMorePages && (
                   <div className="absolute bottom-2 right-4 animate-bounce">
-                    <span className="text-4xl text-gray-700">▼</span>
+                    <span className="text-3xl xl:text-4xl text-gray-700">▼</span>
                   </div>
                 )}
               </>
@@ -126,20 +126,20 @@ const HomeScreen = () => {
           </div>
         </div>
 
-        <div className=" flex items-center justify-center gap-4 m-20">
+        <div className="flex items-center justify-center gap-4 m-10 xl:m-20">
           <input
             type="text"
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
             onKeyPress={handleKeyPress}
-            className="flex-1 rounded-md border-0 border-b-2 border-transparent text-white focus:border-blue-500 focus:border-b-2 focus:outline-none focus:ring-0 transition-all text-2xl pb-4"
+            className="flex-1 rounded-md border-0 border-b-2 border-transparent text-white focus:border-blue-500 focus:border-b-2 focus:outline-none focus:ring-0 transition-all text-xl xl:text-2xl pb-4"
             placeholder="ask something..."
           />
           {userInput.trim() !== "" && (
             <button 
               onClick={handleSendMessage}
               disabled={isLoading}
-              className="bg-blue-500/20 text-2xl hover:bg-blue-400/30 hover:duration-200 text-white px-4 py-2 rounded-md disabled:opacity-50 disabled:cursor-not-allowed"
+              className="bg-blue-500/20 text-xl xl:text-2xl hover:bg-blue-400/30 hover:duration-200 text-white px-4 py-2 rounded-md disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLoading ? "..." : "GO"}
             </button>
